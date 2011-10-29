@@ -1,5 +1,5 @@
 //
-//  SBIndexedArray.h
+//  PZIndexedArray.h
 //  SalesBagStandalone
 //
 //  Created by Patrick Zearfoss on 10/27/11.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface IndexedArray : NSObject
+@interface PZIndexedArray : NSObject <NSCopying>
 {
     @private 
     NSMutableDictionary *dictionary_;

@@ -1,20 +1,20 @@
 //
-//  SBIndexedArray.m
+//  PZIndexedArray.m
 //  SalesBagStandalone
 //
 //  Created by Patrick Zearfoss on 10/27/11.
 //  Copyright (c) 2011 Mindgrub Technologies. All rights reserved.
 //
 
-#import "IndexedArray.h"
+#import "PZIndexedArray.h"
 
-@interface IndexedArray()
+@interface PZIndexedArray()
 - (void)insertKeySorted:(id)key;
 - (void)insertObject:(id)object array:(NSMutableArray *)array;
 
 @end
 
-@implementation IndexedArray
+@implementation PZIndexedArray
 @synthesize keySortSelector = keySortSelector_;
 @synthesize objectSortSelector = objectSortSelector_;
 @synthesize keySortComparator = keySortComparator_;
@@ -42,6 +42,20 @@
     [dictionary_ release];
     [orderedKeys_ release];
     [super dealloc];
+}
+
+#pragma mark NSCopying
+- (id)copyWithZone:(NSZone *)zone
+{
+    PZIndexedArray *copy = [[[self class] alloc] init];
+    copy->orderedKeys_ = [orderedKeys_ copyWithZone:zone];
+    copy->dictionary_ = [dictionary_ copyWithZone:zone];
+    copy.keySortComparator = self.keySortComparator;
+    copy.objectSortComparator = self.objectSortComparator;
+    copy.keySortSelector = self.keySortSelector;
+    copy.objectSortSelector = self.objectSortSelector;
+    
+    return copy;   
 }
 
 // accessing keys
@@ -128,6 +142,10 @@
 {
     NSMutableArray *array = [dictionary_ objectForKey:key];
     [array removeObject:object];
+	if ([array count] == 0)
+	{
+		[dictionary_ removeObjectForKey:key];
+	}
 }
 
 #pragma mark - sorting
@@ -161,7 +179,6 @@
                 [selectorInvocation setArgument:&obj atIndex:2];
                 [selectorInvocation invoke];
                 [selectorInvocation getReturnValue:&result];
-                //result = ()[key performSelector:keySortSelector_ withObject:obj];
             }
             
             if (result == NSOrderedAscending)

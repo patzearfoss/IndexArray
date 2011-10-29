@@ -1,0 +1,234 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2638EC73145C7D1D0008A22B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2638EC72145C7D1D0008A22B /* Foundation.framework */; };
+		2638EC81145C7D330008A22B /* PZIndexedArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 2638EC7F145C7D330008A22B /* PZIndexedArray.h */; };
+		2638EC82145C7D330008A22B /* PZIndexedArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 2638EC80145C7D330008A22B /* PZIndexedArray.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2638EC6F145C7D1D0008A22B /* libPZIndexedArray.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPZIndexedArray.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2638EC72145C7D1D0008A22B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2638EC76145C7D1D0008A22B /* PZIndexedArray-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PZIndexedArray-Prefix.pch"; sourceTree = "<group>"; };
+		2638EC7F145C7D330008A22B /* PZIndexedArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PZIndexedArray.h; sourceTree = "<group>"; };
+		2638EC80145C7D330008A22B /* PZIndexedArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PZIndexedArray.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2638EC6C145C7D1D0008A22B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2638EC73145C7D1D0008A22B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2638EC64145C7D1D0008A22B = {
+			isa = PBXGroup;
+			children = (
+				2638EC74145C7D1D0008A22B /* PZIndexedArray */,
+				2638EC71145C7D1D0008A22B /* Frameworks */,
+				2638EC70145C7D1D0008A22B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2638EC70145C7D1D0008A22B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2638EC6F145C7D1D0008A22B /* libPZIndexedArray.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2638EC71145C7D1D0008A22B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2638EC72145C7D1D0008A22B /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2638EC74145C7D1D0008A22B /* PZIndexedArray */ = {
+			isa = PBXGroup;
+			children = (
+				2638EC7F145C7D330008A22B /* PZIndexedArray.h */,
+				2638EC80145C7D330008A22B /* PZIndexedArray.m */,
+				2638EC75145C7D1D0008A22B /* Supporting Files */,
+			);
+			path = PZIndexedArray;
+			sourceTree = "<group>";
+		};
+		2638EC75145C7D1D0008A22B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2638EC76145C7D1D0008A22B /* PZIndexedArray-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		2638EC6D145C7D1D0008A22B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2638EC81145C7D330008A22B /* PZIndexedArray.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		2638EC6E145C7D1D0008A22B /* PZIndexedArray */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2638EC7C145C7D1D0008A22B /* Build configuration list for PBXNativeTarget "PZIndexedArray" */;
+			buildPhases = (
+				2638EC6B145C7D1D0008A22B /* Sources */,
+				2638EC6C145C7D1D0008A22B /* Frameworks */,
+				2638EC6D145C7D1D0008A22B /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PZIndexedArray;
+			productName = PZIndexedArray;
+			productReference = 2638EC6F145C7D1D0008A22B /* libPZIndexedArray.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2638EC66145C7D1D0008A22B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "Mindgrub Technologies";
+			};
+			buildConfigurationList = 2638EC69145C7D1D0008A22B /* Build configuration list for PBXProject "PZIndexedArray" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2638EC64145C7D1D0008A22B;
+			productRefGroup = 2638EC70145C7D1D0008A22B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2638EC6E145C7D1D0008A22B /* PZIndexedArray */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2638EC6B145C7D1D0008A22B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2638EC82145C7D330008A22B /* PZIndexedArray.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2638EC7A145C7D1D0008A22B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		2638EC7B145C7D1D0008A22B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2638EC7D145C7D1D0008A22B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/PZIndexedArray.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PZIndexedArray/PZIndexedArray-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		2638EC7E145C7D1D0008A22B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/PZIndexedArray.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PZIndexedArray/PZIndexedArray-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2638EC69145C7D1D0008A22B /* Build configuration list for PBXProject "PZIndexedArray" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2638EC7A145C7D1D0008A22B /* Debug */,
+				2638EC7B145C7D1D0008A22B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2638EC7C145C7D1D0008A22B /* Build configuration list for PBXNativeTarget "PZIndexedArray" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2638EC7D145C7D1D0008A22B /* Debug */,
+				2638EC7E145C7D1D0008A22B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2638EC66145C7D1D0008A22B /* Project object */;
+}
