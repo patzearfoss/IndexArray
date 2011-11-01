@@ -74,6 +74,11 @@
 // accessing keys
 - (id)keyAtIndex:(NSUInteger)index
 {
+    if ([orderedKeys_ count] == 0)
+    {
+        return nil;
+    }
+    
     return [orderedKeys_ objectAtIndex:index];
 }
 
@@ -85,6 +90,17 @@
 - (NSUInteger)keyCount
 {
     return [orderedKeys_ count];
+}
+
+- (BOOL)hasKey:(id)key
+{
+    NSInteger index = [orderedKeys_ indexOfObject:key];
+    return index != NSNotFound;
+}
+
+- (NSUInteger)indexForKey:(id)key
+{
+    return [orderedKeys_ indexOfObject:key];
 }
 
 // accessing objects
@@ -155,10 +171,11 @@
 {
     NSMutableArray *array = [dictionary_ objectForKey:key];
     [array removeObject:object];
-	if ([array count] == 0)
-	{
-		[dictionary_ removeObjectForKey:key];
-	}
+    if ([array count] == 0)
+    {
+        [orderedKeys_ removeObject:key];
+        [dictionary_ removeObjectForKey:key];
+    }
 }
 
 #pragma mark - sorting
@@ -221,7 +238,7 @@
         return;
     }
     
-    __block NSUInteger insertIndex = 0;
+    __block NSUInteger insertIndex = -1;
     __block NSInvocation *selectorInvocation = nil;
     if (!usesComparatorForObjects_)
     {
@@ -250,7 +267,14 @@
         }
     }];
     
-    [array insertObject:object atIndex:insertIndex];
+    if (insertIndex == -1)
+    {
+        [array addObject:object];
+    }
+    else
+    {
+        [array insertObject:object atIndex:insertIndex];
+    }
 }
 
 #pragma mark -  handling selectors and comparators

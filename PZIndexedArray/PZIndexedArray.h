@@ -47,6 +47,8 @@
 - (id)keyAtIndex:(NSUInteger)index;
 - (NSOrderedSet *)allKeys;
 - (NSUInteger)keyCount;
+- (BOOL)hasKey:(id)key;
+- (NSUInteger)indexForKey:(id)key;
 
 // accessing objects
 - (id)objectForKeyAtIndex:(NSUInteger)keyIndex objectIndex:(NSUInteger)objIndex;
