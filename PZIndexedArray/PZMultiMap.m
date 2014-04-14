@@ -27,6 +27,8 @@
 
 @property (nonatomic) BOOL sortsKeys;
 @property (nonatomic) BOOL sortsObjects;
+@property (nonatomic, strong) NSMutableDictionary *dictionary;
+@property (nonatomic, strong) NSMutableOrderedSet *orderedKeys;
 
 @end
 
@@ -39,8 +41,8 @@
     self = [super init];
     if (self)
     {
-        dictionary_ = [[NSMutableDictionary alloc] init];
-        orderedKeys_ = [[NSMutableOrderedSet alloc] init];
+        _dictionary = [[NSMutableDictionary alloc] init];
+        _orderedKeys = [[NSMutableOrderedSet alloc] init];
     }
     
     return self;
@@ -51,8 +53,8 @@
 - (id)copyWithZone:(NSZone *)zone
 {
     PZMultiMap *copy = [[[self class] alloc] init];
-    copy->orderedKeys_ = [orderedKeys_ copyWithZone:zone];
-    copy->dictionary_ = [dictionary_ copyWithZone:zone];
+    copy.orderedKeys = [self.orderedKeys copyWithZone:zone];
+    copy.dictionary = [self.dictionary copyWithZone:zone];
     copy.keySortComparator = self.keySortComparator;
     copy.objectSortComparator = self.objectSortComparator;
 
@@ -63,39 +65,39 @@
 // accessing keys
 - (id)keyAtIndex:(NSUInteger)index
 {
-    if ([orderedKeys_ count] == 0)
+    if ([self.orderedKeys count] == 0)
     {
         return nil;
     }
     
-    return [orderedKeys_ objectAtIndex:index];
+    return [self.orderedKeys objectAtIndex:index];
 }
 
 - (NSOrderedSet *)allKeys
 {
-    return [orderedKeys_ copy];
+    return [self.orderedKeys copy];
 }
 
 - (NSUInteger)keyCount
 {
-    return [orderedKeys_ count];
+    return [self.orderedKeys count];
 }
 
 - (BOOL)hasKey:(id)key
 {
-    NSInteger index = [orderedKeys_ indexOfObject:key];
+    NSInteger index = [self.orderedKeys indexOfObject:key];
     return index != NSNotFound;
 }
 
 - (NSUInteger)indexForKey:(id)key
 {
-    return [orderedKeys_ indexOfObject:key];
+    return [self.orderedKeys indexOfObject:key];
 }
 
 // accessing objects
 - (id)objectForKey:(id)key index:(NSUInteger)index
 {
-    NSArray *array = [dictionary_ objectForKey:key];
+    NSArray *array = [self.dictionary objectForKey:key];
     if (array && index < [array count])
     {
         return [array objectAtIndex:index];
@@ -112,15 +114,15 @@
 
 - (NSArray *)allObjectsForKey:(id)key
 {
-    return [[dictionary_ objectForKey:key] copy];
+    return [[self.dictionary objectForKey:key] copy];
 }
 
 - (NSUInteger)count
 {
     NSUInteger count = 0;
-    for (id key in [dictionary_ allKeys])
+    for (id key in [self.dictionary allKeys])
     {
-        count += [[dictionary_ objectForKey:key] count];
+        count += [[self.dictionary objectForKey:key] count];
     }
     
     return count;
@@ -129,11 +131,11 @@
 // adding objects
 - (void)addObject:(id)object forKey:(id<NSCopying>)key
 {
-    NSMutableArray *array = [dictionary_ objectForKey:key];
+    NSMutableArray *array = [self.dictionary objectForKey:key];
     if (!array)
     {
         array = [NSMutableArray array];
-        [dictionary_ setObject:array forKey:key];
+        [self.dictionary setObject:array forKey:key];
         
         if (self.sortsKeys)
         {
@@ -141,7 +143,7 @@
         }
         else
         {
-            [orderedKeys_ addObject:key];
+            [self.orderedKeys addObject:key];
         }
     }
     
@@ -158,29 +160,29 @@
 // removing
 - (void)removeObject:(id)object forKey:(id)key
 {
-    NSMutableArray *array = [dictionary_ objectForKey:key];
+    NSMutableArray *array = [self.dictionary objectForKey:key];
     [array removeObject:object];
     if ([array count] == 0)
     {
-        [orderedKeys_ removeObject:key];
-        [dictionary_ removeObjectForKey:key];
+        [self.orderedKeys removeObject:key];
+        [self.dictionary removeObjectForKey:key];
     }
 }
 
 #pragma mark - sorting
 - (void)insertKeySorted:(id)key
 {
-    if ([orderedKeys_ count] == 0)
+    if ([self.orderedKeys count] == 0)
     {
-        [orderedKeys_ addObject:key];
+        [self.orderedKeys addObject:key];
         return;
     }
     
     __block NSUInteger insertIndex = -1;
 
     
-    [orderedKeys_ enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        if (idx  < [orderedKeys_ count])
+    [self.orderedKeys enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if (idx  < [self.orderedKeys count])
         {     
             NSComparisonResult result = NSOrderedAscending;
 
@@ -198,11 +200,11 @@
     
     if (insertIndex == -1)
     {
-        [orderedKeys_ addObject:key];
+        [self.orderedKeys addObject:key];
     }
     else
     {
-        [orderedKeys_ insertObject:key atIndex:insertIndex];
+        [self.orderedKeys insertObject:key atIndex:insertIndex];
     }
 }
 

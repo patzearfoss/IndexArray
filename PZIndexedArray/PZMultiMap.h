@@ -24,11 +24,7 @@
 @interface PZMultiMap : NSObject <NSCopying>
 {
     @private 
-    NSMutableDictionary *dictionary_;
-    NSMutableOrderedSet *orderedKeys_;
-    
-    NSComparator keySortComparator_;
-    NSComparator objectSortComparator_;
+
 }
 
 @property (nonatomic, copy) NSComparator keySortComparator;
