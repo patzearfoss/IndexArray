@@ -21,7 +21,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PZIndexedArray : NSObject <NSCopying>
+@interface PZMultiMap : NSObject <NSCopying>
 {
     @private 
     NSMutableDictionary *dictionary_;

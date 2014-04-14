@@ -8,16 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		2638EC73145C7D1D0008A22B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2638EC72145C7D1D0008A22B /* Foundation.framework */; };
-		2638EC81145C7D330008A22B /* PZIndexedArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 2638EC7F145C7D330008A22B /* PZIndexedArray.h */; };
-		2638EC82145C7D330008A22B /* PZIndexedArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 2638EC80145C7D330008A22B /* PZIndexedArray.m */; };
+		2638EC81145C7D330008A22B /* PZMultiMap.h in Headers */ = {isa = PBXBuildFile; fileRef = 2638EC7F145C7D330008A22B /* PZMultiMap.h */; };
+		2638EC82145C7D330008A22B /* PZMultiMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 2638EC80145C7D330008A22B /* PZMultiMap.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2638EC6F145C7D1D0008A22B /* libPZIndexedArray.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPZIndexedArray.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2638EC72145C7D1D0008A22B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2638EC76145C7D1D0008A22B /* PZIndexedArray-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PZIndexedArray-Prefix.pch"; sourceTree = "<group>"; };
-		2638EC7F145C7D330008A22B /* PZIndexedArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PZIndexedArray.h; sourceTree = "<group>"; };
-		2638EC80145C7D330008A22B /* PZIndexedArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PZIndexedArray.m; sourceTree = "<group>"; };
+		2638EC7F145C7D330008A22B /* PZMultiMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PZMultiMap.h; sourceTree = "<group>"; };
+		2638EC80145C7D330008A22B /* PZMultiMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PZMultiMap.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +60,8 @@
 		2638EC74145C7D1D0008A22B /* PZIndexedArray */ = {
 			isa = PBXGroup;
 			children = (
-				2638EC7F145C7D330008A22B /* PZIndexedArray.h */,
-				2638EC80145C7D330008A22B /* PZIndexedArray.m */,
+				2638EC7F145C7D330008A22B /* PZMultiMap.h */,
+				2638EC80145C7D330008A22B /* PZMultiMap.m */,
 				2638EC75145C7D1D0008A22B /* Supporting Files */,
 			);
 			path = PZIndexedArray;
@@ -82,7 +82,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2638EC81145C7D330008A22B /* PZIndexedArray.h in Headers */,
+				2638EC81145C7D330008A22B /* PZMultiMap.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2638EC82145C7D330008A22B /* PZIndexedArray.m in Sources */,
+				2638EC82145C7D330008A22B /* PZMultiMap.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

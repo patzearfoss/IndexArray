@@ -19,15 +19,15 @@
 //OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 //WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#import "PZIndexedArray.h"
+#import "PZMultiMap.h"
 
-@interface PZIndexedArray()
+@interface PZMultiMap()
 - (void)insertKeySorted:(id)key;
 - (void)insertObject:(id)object array:(NSMutableArray *)array;
 
 @end
 
-@implementation PZIndexedArray
+@implementation PZMultiMap
 @synthesize keySortComparator = keySortComparator_;
 @synthesize objectSortComparator = objectSortComparator_;
 
@@ -47,7 +47,7 @@
 #pragma mark NSCopying
 - (id)copyWithZone:(NSZone *)zone
 {
-    PZIndexedArray *copy = [[[self class] alloc] init];
+    PZMultiMap *copy = [[[self class] alloc] init];
     copy->orderedKeys_ = [orderedKeys_ copyWithZone:zone];
     copy->dictionary_ = [dictionary_ copyWithZone:zone];
     copy.keySortComparator = self.keySortComparator;
