@@ -28,8 +28,6 @@
 @end
 
 @implementation PZIndexedArray
-@synthesize keySortSelector = keySortSelector_;
-@synthesize objectSortSelector = objectSortSelector_;
 @synthesize keySortComparator = keySortComparator_;
 @synthesize objectSortComparator = objectSortComparator_;
 
@@ -40,22 +38,11 @@
     {
         dictionary_ = [[NSMutableDictionary alloc] init];
         orderedKeys_ = [[NSMutableOrderedSet alloc] init];
-        
-        usesComparatorForObjects_ = YES;
-        usesComparatorForKeys_ = YES;
     }
     
     return self;
 }
 
-- (void)dealloc
-{
-    [keySortComparator_ release];
-    [objectSortComparator_ release];
-    [dictionary_ release];
-    [orderedKeys_ release];
-    [super dealloc];
-}
 
 #pragma mark NSCopying
 - (id)copyWithZone:(NSZone *)zone
@@ -65,8 +52,7 @@
     copy->dictionary_ = [dictionary_ copyWithZone:zone];
     copy.keySortComparator = self.keySortComparator;
     copy.objectSortComparator = self.objectSortComparator;
-    copy.keySortSelector = self.keySortSelector;
-    copy.objectSortSelector = self.objectSortSelector;
+
     
     return copy;   
 }
@@ -188,28 +174,15 @@
     }
     
     __block NSUInteger insertIndex = -1;
-    __block NSInvocation *selectorInvocation = nil;
-    if (!usesComparatorForKeys_)
-    {
-        selectorInvocation = [NSInvocation invocationWithMethodSignature:[key methodSignatureForSelector:keySortSelector_]];
-        [selectorInvocation setTarget:key];
-        [selectorInvocation setSelector:keySortSelector_];
-    }
+
     
     [orderedKeys_ enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if (idx  < [orderedKeys_ count])
         {     
             NSComparisonResult result = NSOrderedAscending;
-            if (usesComparatorForKeys_)
-            {
-                result = self.keySortComparator(key, obj);
-            }
-            else
-            {
-                [selectorInvocation setArgument:&obj atIndex:2];
-                [selectorInvocation invoke];
-                [selectorInvocation getReturnValue:&result];
-            }
+
+            result = self.keySortComparator(key, obj);
+
             
             if (result == NSOrderedAscending)
             {
@@ -239,26 +212,13 @@
     }
     
     __block NSUInteger insertIndex = -1;
-    __block NSInvocation *selectorInvocation = nil;
-    if (!usesComparatorForObjects_)
-    {
-        selectorInvocation = [NSInvocation invocationWithMethodSignature:[object methodSignatureForSelector:objectSortSelector_]];
-    }
     
     [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSComparisonResult result = NSOrderedAscending;
         
-        if (usesComparatorForObjects_)
-        {
-            result = self.objectSortComparator(object, obj);
-        }
-        else
-        {
-            [selectorInvocation setArgument:&obj atIndex:2];
-            [selectorInvocation invoke];
-            [selectorInvocation getReturnValue:&result];
-            //result = [object performSelector:objectSortSelector_ withObject:obj];
-        }
+
+        result = self.objectSortComparator(object, obj);
+
         
         if (result == NSOrderedAscending)
         {
@@ -278,34 +238,13 @@
 }
 
 #pragma mark -  handling selectors and comparators
-- (void)setKeySortSelector:(SEL)keySortSelector
-{
-    if (keySortSelector != keySortSelector_)
-    {
-        keySortSelector_ = keySortSelector;
-    }
-    
-    sortsKeys_ = keySortSelector_ != NULL;
-    usesComparatorForKeys_ = keySortSelector_ == NULL;
-}
 
-- (void)setObjectSortSelector:(SEL)objectSortSelector
-{
-    if (objectSortSelector != objectSortSelector_)
-    {
-        objectSortSelector_ = objectSortSelector;
-    }
-    
-    sortsObjects_ = objectSortSelector_ != NULL;
-    usesComparatorForObjects_ = objectSortComparator_ == NULL;
-}
 
 - (void)setKeySortComparator:(NSComparator)keySortComparator
 {
     if (keySortComparator != keySortComparator_)
     {
-        [keySortComparator_ release];
-        keySortComparator_ = Block_copy(keySortComparator);
+        keySortComparator_ = [keySortComparator copy];
     }
     
     sortsKeys_ = keySortComparator != nil;
@@ -315,8 +254,7 @@
 {
     if (objectSortComparator != objectSortComparator_)
     {
-        [objectSortComparator_ release];
-        objectSortComparator_ = Block_copy(objectSortComparator);
+        objectSortComparator_ = [objectSortComparator copy];
     }
     
     sortsObjects_ = objectSortComparator != nil;

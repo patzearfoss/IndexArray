@@ -27,19 +27,14 @@
     NSMutableDictionary *dictionary_;
     NSMutableOrderedSet *orderedKeys_;
     
-    SEL keySortSelector_;
-    SEL objectSortSelector_;
     NSComparator keySortComparator_;
     NSComparator objectSortComparator_;
     
     BOOL sortsKeys_;
     BOOL sortsObjects_;
-    BOOL usesComparatorForKeys_;
-    BOOL usesComparatorForObjects_;
+
 }
 
-@property (nonatomic, assign) SEL keySortSelector;
-@property (nonatomic, assign) SEL objectSortSelector;
 @property (nonatomic, copy) NSComparator keySortComparator;
 @property (nonatomic, copy) NSComparator objectSortComparator;
 

@@ -187,6 +187,7 @@
 		2638EC7D145C7D1D0008A22B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/PZIndexedArray.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PZIndexedArray/PZIndexedArray-Prefix.pch";
@@ -199,6 +200,7 @@
 		2638EC7E145C7D1D0008A22B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/PZIndexedArray.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PZIndexedArray/PZIndexedArray-Prefix.pch";
@@ -227,6 +229,7 @@
 				2638EC7E145C7D1D0008A22B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
