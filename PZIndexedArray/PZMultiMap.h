@@ -29,10 +29,6 @@
     
     NSComparator keySortComparator_;
     NSComparator objectSortComparator_;
-    
-    BOOL sortsKeys_;
-    BOOL sortsObjects_;
-
 }
 
 @property (nonatomic, copy) NSComparator keySortComparator;

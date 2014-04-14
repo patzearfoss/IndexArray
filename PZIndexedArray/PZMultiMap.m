@@ -25,6 +25,9 @@
 - (void)insertKeySorted:(id)key;
 - (void)insertObject:(id)object array:(NSMutableArray *)array;
 
+@property (nonatomic) BOOL sortsKeys;
+@property (nonatomic) BOOL sortsObjects;
+
 @end
 
 @implementation PZMultiMap
@@ -132,7 +135,7 @@
         array = [NSMutableArray array];
         [dictionary_ setObject:array forKey:key];
         
-        if (sortsKeys_)
+        if (self.sortsKeys)
         {
             [self insertKeySorted:key];
         }
@@ -142,7 +145,7 @@
         }
     }
     
-    if (sortsObjects_)
+    if (self.sortsObjects)
     {
         [self insertObject:object array:array];
     }
@@ -247,7 +250,7 @@
         keySortComparator_ = [keySortComparator copy];
     }
     
-    sortsKeys_ = keySortComparator != nil;
+    self.sortsKeys = keySortComparator != nil;
 }
 
 - (void)setObjectSortComparator:(NSComparator)objectSortComparator
@@ -257,7 +260,7 @@
         objectSortComparator_ = [objectSortComparator copy];
     }
     
-    sortsObjects_ = objectSortComparator != nil;
+    self.sortsObjects = objectSortComparator != nil;
 }
 
 @end
