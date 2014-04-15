@@ -22,31 +22,90 @@
 #import <Foundation/Foundation.h>
 
 @interface PZMultiMap : NSObject <NSCopying>
-{
-    @private 
 
-}
-
+/**
+ A comparator to use when inserting objects
+ */
 @property (nonatomic, copy) NSComparator keySortComparator;
+
+/**
+ A comparator to use when inserting objects
+ */
 @property (nonatomic, copy) NSComparator objectSortComparator;
 
-// accessing keys
+#pragma mark - accessing keys
 - (id)keyAtIndex:(NSUInteger)index;
+
+/**
+ Returns the set of keys
+ @return the sorted set of keys
+ */
 - (NSOrderedSet *)allKeys;
+
+/**
+ Returns the count of keys in the collection
+ @return the count
+ */
 - (NSUInteger)keyCount;
+
+/**
+ Determine if the collection contains the key
+ @param key the key to search for
+ @return YES if the collection contains the key, NO otherwise
+ */
 - (BOOL)hasKey:(id)key;
+
+/**
+ Returns the index of the specified key.
+ @param key the key
+ @return the index or NSNotFound if the collection doesn't contain that key
+ */
 - (NSUInteger)indexForKey:(id)key;
 
-// accessing objects
+#pragma mark - accessing objects
+/**
+ Returns the object at the given index for the given key index
+ @param keyIndex the index of the key to return the object for
+ @param objIndex the index of the object to return
+ @return the object or nil if it does not exist
+ */
 - (id)objectForKeyAtIndex:(NSUInteger)keyIndex objectIndex:(NSUInteger)objIndex;
+
+/**
+ Returns the object at the specified index for the specified key
+ @param key
+ @param index
+ @return the object or nil if it doesn't exist
+ */
 - (id)objectForKey:(id)key index:(NSUInteger)index;
+
+/**
+ Returns all objects for the given key
+ @param key 
+ @param the array objects for that key or nil if the key doesn't exist
+ */
 - (NSArray *)allObjectsForKey:(id)key;
+
+/**
+ Returns the count of objects in the Multimap
+ */
 - (NSUInteger)count;
 
-// adding objects
+#pragma mark - adding objects
+/**
+ Adds the specified object for the given key.
+ If the key does not exist it will be created.
+ @param object the object to add
+ @param key the key to add it under
+ */
 - (void)addObject:(id)object forKey:(id<NSCopying>)key;
 
-// removing objects
+#pragma mark - removing objects
+/**
+ Removes all pointers to the specified object for the specified key
+ @param object the object to remove
+ @param key the under which to remove it
+ */
 - (void)removeObject:(id)object forKey:(id)key;
 
 @end
